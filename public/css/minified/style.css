@@ -1,0 +1,438 @@
+/* Estilos generales */
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body, input, textarea {
+    font-family: "";
+}
+
+textarea {
+    min-height: 137px;
+}
+
+select, select option {
+    cursor: pointer;
+}
+
+label {
+    cursor: pointer;
+}
+
+.card {
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, .08), 0 2px 4px 0 rgba(0, 0, 0, .12);
+    border-radius: 3px;
+    background: #fff;
+}
+
+.vertical-align {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.vertical-align.align-left {
+    justify-content: flex-start;
+}
+
+.vertical-align.align-right {
+    justify-content: flex-end;
+}
+
+.button-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.button-container.align-left {
+    justify-content: flex-start;
+}
+
+.button-container.align-right {
+    justify-content: flex-end;
+}
+
+.button-container.align-between {
+    justify-content: space-between;
+}
+
+.button-container button {
+    border: none;
+    outline: none;
+    margin: 0 9px;
+}
+
+.button-container button.small-button {
+    background: #7ac5ff;
+    color: #fff;
+    padding: 4px 20px;
+    transition: 0.3s all ease;
+    -webkit-transition: 0.3s all ease;
+    -moz-transition: 0.3s all ease;
+    -ms-transition: 0.3s all ease;
+    -o-transition: 0.3s all ease;
+}
+
+.button-container button.small-button:hover {
+    background: #8bcdff;
+}
+
+.button-container button.small-button:focus {
+    box-shadow: 0 0 0 0.2rem rgb(169, 218, 255)
+}
+
+.button-container button.payment-button {
+    background: #37a95d;
+    color: #fff;
+    padding: 10px 20px;
+    transition: 0.3s all ease;
+    -webkit-transition: 0.3s all ease;
+    -moz-transition: 0.3s all ease;
+    -ms-transition: 0.3s all ease;
+    -o-transition: 0.3s all ease;
+}
+
+.button-container button.payment-button:hover {
+    background: #42b668;
+}
+
+.button-container button.payment-button:focus {
+    box-shadow: 0 0 0 0.2rem rgb(83, 156, 108)
+}
+
+.image-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container img {
+    width: 100%;
+}
+
+.icon-container {
+    text-align: center;
+}
+
+.icon-container.red {
+    color: #ff8787
+}
+
+.icon-container.blue {
+    color: #7ac5ff
+}
+
+.customized-input-file .icon-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+    font-size: 19px;
+    cursor: pointer;
+}
+
+.customized-input-file .icon-container.file-charged {
+    color: #5ab72c;
+}
+
+.customized-input-file .icon-container .charged {
+    display: none;
+}
+
+.customized-input-file .icon-container.file-charged .charged {
+    display: flex;
+    font-family: "Roboto";
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.customized-input-file input {
+    display: none;
+}
+
+.customized-input-file input.is-invalid+.icon-container {
+    color: #d9534f;
+}
+
+.small {
+    font-size: 12px;
+}
+
+.link {
+    color: #7ac5ff;
+}
+
+.link:hover {
+    color: #7ac5ff;
+    text-decoration: underline;
+}
+
+/* Botón flotante */
+
+.floating-button {
+    position: fixed;
+    bottom: 12px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
+    z-index: 1;
+    border-radius: 100%;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.52);
+}
+
+.floating-button .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    font-size: 37px;
+    border-radius: 100%;
+    background: #e24242;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.5s all ease;
+    -webkit-transition: 0.5s all ease;
+    -moz-transition: 0.5s all ease;
+    -ms-transition: 0.5s all ease;
+    -o-transition: 0.5s all ease;
+}
+
+.floating-button .container:hover {
+    transform: rotateZ(360deg);
+    -webkit-transform: rotateZ(360deg);
+    -moz-transform: rotateZ(360deg);
+    -ms-transform: rotateZ(360deg);
+    -o-transform: rotateZ(360deg);
+}
+
+/* ->Botón flotante */
+
+/* Radio buttons */
+
+.radio-container input[type="radio"] {
+    display: none;
+}
+
+.radio-container label {
+    display: inline-block;
+    position: relative;
+    padding: 5px 10px 5px 35px;
+    margin-bottom: 2px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.radio-container label:hover {
+    background: rgba(0, 116, 217, 0.2);
+}
+
+.radio-container label:before {
+    content: '';
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border: 2px solid #000;
+    position: absolute;
+    left: 5px;
+    top: 7px;
+    border-radius: 100%;
+}
+
+.radio-container input[type="radio"]:checked+label {
+    background: #3d90da;
+    color: #fff;
+    padding: 5px 10px;
+}
+
+.radio-container input[type="radio"]:checked+label:before {
+    display: none;
+}
+
+/* Inputs personalizados */
+
+    .input-alternative {
+        display: inline-block;
+        width: 100%;
+        margin-top: 18px;
+    }
+
+        /* OneLine y MultiLine */
+
+        .input-alternative .input-container,
+        .input-alternative.multi-line .text-area-container {
+            display: block;
+            position: relative;
+        }
+
+        .input-alternative .input-container input,
+        .input-alternative.multi-line .text-area-container .text-area {
+            display: inline-block;
+            padding: 5px;
+            width: 100%;
+            border: none;
+            outline: none;
+            border-bottom: 2px solid #ccc;
+            transition: 0.3s all ease;
+            -webkit-transition: 0.3s all ease;
+            -moz-transition: 0.3s all ease;
+            -ms-transition: 0.3s all ease;
+            -o-transition: 0.3s all ease;
+}
+
+        .input-alternative .input-container input.is-invalid,
+        .input-alternative.multi-line .text-area-container .text-area.is-invalid {
+            border-bottom: 2px solid #d9534f;
+        }
+        
+        
+        .input-alternative .input-container input.is-invalid + label,
+        .input-alternative.multi-line .text-area-container .text-area.is-invalid + .text-area-placeholder {
+            color: #d9534f;
+        }
+
+    
+        .input-alternative .input-container label,
+        .input-alternative.multi-line .text-area-container .text-area-placeholder {
+            position: absolute;
+            top: 5px;
+            left: 0;
+            color: #ccc;
+            font-size: 15px;
+            cursor: text;
+            font-weight: normal;
+            -webkit-transition: all 0.1s ease;
+            -o-transition: all 0.1s ease;
+            transition: all 0.1s ease;
+        }
+
+        .input-alternative .input-container label.active,
+        .input-alternative.multi-line .text-area-container .text-area-placeholder.active {
+            top: -15px;
+            font-size: 12px;
+            color: #ccc;
+        }
+
+        .input-alternative .input-container input:focus + label,
+        .input-alternative.multi-line .text-area-container .text-area:focus + .text-area-placeholder {
+            top: -15px;
+            font-size: 12px;
+            color: #7ac5ff;
+        }
+
+        .input-alternative .input-container .border-bottom-input,
+        .input-alternative.multi-line .text-area-container .border-bottom-input {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            display: inline-block;
+            width: 0;
+            height: 2px;
+            background: #7ac5ff;
+            -webkit-transition: all 0.3s ease;
+            -o-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+        }
+
+        .input-alternative .input-container input:focus + label + .border-bottom-input,
+        .input-alternative.multi-line .text-area-container .text-area:focus+.text-area-placeholder+.border-bottom-input {
+            width: 100%;
+        }
+
+        /* ->OneLine y MultiLine */
+
+        /* OneLine y MultiLine Alternative */
+        
+        .input-alternative.v-2 {
+            margin: 0 !important;
+        }
+
+        .input-alternative.v-2 .input-container input,
+        .input-alternative.multi-line.v-2 .text-area-container .text-area {
+            border: 2px solid #ccc !important;
+        }
+
+        .input-alternative.v-2 .input-container label, 
+        .input-alternative.multi-line.v-2 .text-area-container .text-area-placeholder {
+            top: 7px;
+            left: 13px;
+        }
+
+        .input-alternative.v-2 .input-container input:focus + label,
+        .input-alternative.multi-line.v-2 .text-area-container .text-area:focus + .text-area-placeholder,
+        .input-alternative.v-2 .input-container label.active,
+        .input-alternative.multi-line.v-2 .text-area-container .text-area-placeholder.active {
+            display:none;
+        }
+
+        .input-alternative.v-2 .input-container input:focus,
+        .input-alternative.multi-line.v-2 .text-area-container .text-area:focus {
+            border-color: #7ac5ff !important;
+        }
+        
+        /* ->OneLine y MultiLine Alternative */
+
+    /* ->Inputs personalizados */
+
+/* ->Radio buttons */
+
+.checkbox-slider input {
+    display: none;
+}
+
+.checkbox-slider label {
+    position: relative;
+}
+
+.checkbox-slider label:after {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    top: 4px;
+    left: calc(100% + 9px);
+    background: #fff;
+    border-radius: 20px;
+    transition: 0.3s all ease;
+    -webkit-transition: 0.3s all ease;
+    -moz-transition: 0.3s all ease;
+    -ms-transition: 0.3s all ease;
+    -o-transition: 0.3s all ease;
+}
+
+.checkbox-slider label:before {
+    content: '';
+    display: inline-block;
+    width: 34px;
+    height: 20px;
+    position: absolute;
+    left: calc(100% + 5px);
+    background: #ccc;
+    border-radius: 20px;
+    transition: 0.3s all ease;
+    -webkit-transition: 0.3s all ease;
+    -moz-transition: 0.3s all ease;
+    -ms-transition: 0.3s all ease;
+    -o-transition: 0.3s all ease;
+}
+
+.checkbox-slider input:checked + label:after {
+    left: calc(100% + 22px);
+}
+
+.checkbox-slider input:checked+label:before {
+    /* background: #2387fa; */
+    background: #3d90da;
+}
+
+/* ->Estilos generales */

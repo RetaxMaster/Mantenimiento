@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class Admin
+class Encargado
 {
     /**
      * Handle an incoming request.
@@ -13,9 +13,8 @@ class Admin
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
-    {
-        if (auth()->user()->rol >= 3) return $next($request);
+    public function handle($request, Closure $next) {
+        if (auth()->user()->rol >= 2) return $next($request);
 
         return redirect()->route("home");
     }

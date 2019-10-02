@@ -1,12 +1,49 @@
+/* Modificando los estilos de bootstrap */
+
+.navbar {
+    padding: 0 50px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.row {
+    margin: 0 !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #fff;
+}
+
+/* ->Modificando los estilos de bootstrap */
+
 /* Estilos generales */
 
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    min-height: 100%;
+}
+
+/* html, body {
+    display: inline-block;
+    width: 100%;
+    min-height: 100%;
+} */
+
+body {
+    width: 100%;
+    position: relative;
 }
 
 body, input, textarea {
-    font-family: "";
+    font-family: "Lato", sans-serif;
 }
 
 textarea {
@@ -21,10 +58,37 @@ label {
     cursor: pointer;
 }
 
+a .beauty-button {
+    text-decoration: none;
+    padding: 9px 19px;
+    border: 3px solid #fff;
+    border-radius: 22px;
+    transition: 0.3s all ease;
+    -webkit-border-radius: 22px;
+    -moz-border-radius: 22px;
+    -ms-border-radius: 22px;
+    -o-border-radius: 22px;
+    -webkit-transition: 0.3s all ease;
+    -moz-transition: 0.3s all ease;
+    -ms-transition: 0.3s all ease;
+    -o-transition: 0.3s all ease;
+}
+
+a:hover .beauty-button {
+    background: #fff;
+    color: #2196f3 !important;
+}
+
 .card {
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, .08), 0 2px 4px 0 rgba(0, 0, 0, .12);
     border-radius: 3px;
     background: #fff;
+}
+
+.content {
+    padding: 0 50px;
+    margin-top: 50px;
+    margin-bottom: 100px;
 }
 
 .vertical-align {
@@ -436,3 +500,18 @@ label {
 }
 
 /* ->Estilos generales */
+
+/* Footer */
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+}
+
+footer > div {
+    padding: 5px 0;
+}
+
+/* ->Footer */

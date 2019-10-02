@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -36,4 +38,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static function addAdmin() {
+        static::create([
+            'name' => "Admin",
+            "username" => "Admin",
+            'email' => "admin@admin.com",
+            'rol' => 3,
+            'email_verified_at' => now(),
+            'password' => Hash::make("asd"),
+            'remember_token' => Str::random(10),
+        ]);
+    }
 }

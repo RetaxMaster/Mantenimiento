@@ -1,0 +1,39 @@
+/* xl */
+@media (max-width: 1999px) {}
+
+/* lg */
+@media (max-width: 991px) {}
+
+/* md */
+@media (max-width: 767px) {
+    #card-form {
+        padding: 20px !important;
+    }
+}
+
+/* sm */
+@media (max-width: 575px) {}
+
+/* xs */
+@media (max-width: 450px) {
+    .content {
+        padding: 0 15px;
+        margin-bottom: 100px;
+    }
+
+    .navbar {
+        padding: 10px 15px;
+    }
+
+    .button-container button.paypal {
+        padding: 0.5em 3em;
+    }
+
+    #Visor.multiple .visor-main .arrow#left {
+        left: 5px !important;
+    }
+
+    #Visor.multiple .visor-main .arrow#right {
+        right: 5px !important;
+    }
+}

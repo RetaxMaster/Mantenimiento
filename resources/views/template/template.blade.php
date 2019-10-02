@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ asset(env("css")."visor.css") }}">
     @yield('css', "")
     @yield('queries', "")
-    <title>@yield('title', "") - IpicSports</title>
+    <title>@yield('title', "") - {{ env("APP_NAME") }}</title>
     <title>Document</title>
 </head>
 <body>

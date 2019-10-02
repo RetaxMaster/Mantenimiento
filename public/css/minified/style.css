@@ -85,6 +85,10 @@ a:hover .beauty-button {
     background: #fff;
 }
 
+.card.pad {
+    padding: 23px;
+}
+
 .content {
     padding: 0 50px;
     margin-top: 50px;
@@ -500,6 +504,33 @@ a:hover .beauty-button {
 }
 
 /* ->Estilos generales */
+
+/* Lista de items */
+
+ul.list {
+    padding: 0;
+    margin: 0;
+    max-height: 400px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+ul.list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    border-bottom: 1px solid #ccc;
+}
+
+ul.list li:last-child {
+   border: none; 
+}
+
+ul.list li .delete {
+    cursor: pointer;
+}
+
+/* ->Lista de items */
 
 /* Footer */
 

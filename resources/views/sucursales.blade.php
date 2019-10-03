@@ -15,7 +15,7 @@
             <form action="add-sector" method="post">
                 <div class="form-group">
                     <label for="sector-name">Nombre del sector</label>
-                    <input type="text" class="form-control" placeholder="Nombre del sector" id="sector-name">
+                    <input type="text" class="form-control" placeholder="Nombre del sector" id="sector-name" name="sector-name">
                 </div>
                 <div class="button-container align-right">
                     <button type="submit" class="btn btn-primary">Agregar</button>
@@ -28,7 +28,7 @@
             <form action="add-sucursal" method="post">
                 <div class="form-group">
                     <label for="sucursal-name">Nombre de la sucursal</label>
-                    <input type="text" class="form-control" placeholder="Nombre de la sucursal" id="sucursal-name">
+                    <input type="text" class="form-control" placeholder="Nombre de la sucursal" id="sucursal-name" name="sucursal-name">
                 </div>
                 <div class="button-container align-right">
                     <button type="submit" class="btn btn-primary">Agregar</button>

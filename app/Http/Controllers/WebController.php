@@ -23,7 +23,7 @@ class WebController extends Controller {
 
     //Carga la página de articulos individuales
     public function loadArticulos() {
-        return "Este es el home jaja";
+        return view("articulos");
     }
 
     //Carga la página de reportes

@@ -14,8 +14,8 @@
             <h2>Artículos maestros</h2>
             <form action="add-sector" method="post">
                 <div class="form-group">
-                    <label for="sector-name">Nombre del artículo</label>
-                    <input type="text" class="form-control" placeholder="Nombre del artículo" id="sector-name">
+                    <label for="articulo-name">Nombre del artículo</label>
+                    <input type="text" class="form-control" placeholder="Nombre del artículo" id="articulo-name" name="articulo-name">
                 </div>
                 <div class="button-container align-right">
                     <button type="submit" class="btn btn-primary">Agregar</button>

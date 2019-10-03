@@ -15,7 +15,7 @@ Route::get('/', "WebController@loadHome")->name("home");
 
 Route::get('/sucursales', "WebController@loadSucursales")->name("sucursales");
 
-Route::get('/articulos/maestros', "WebController@loadMaster")->name("master");
+Route::get('/articulos/maestro', "WebController@loadMaster")->name("master");
 
 Route::get('/articulos', "WebController@loadArticulos")->name("articulos");
 

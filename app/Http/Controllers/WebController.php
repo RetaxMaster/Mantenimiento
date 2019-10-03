@@ -18,7 +18,7 @@ class WebController extends Controller {
 
     //Carga la página de artículos maestros
     public function loadMaster() {
-        return "Este es el home jaja";
+        return view("master");
     }
 
     //Carga la página de articulos individuales

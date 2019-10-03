@@ -28,7 +28,7 @@ class WebController extends Controller {
 
     //Carga la página de reportes
     public function loadReportes() {
-        return "Este es el home jaja";
+        return view("reportes");
     }
 
     //Carga la página de los gráficos

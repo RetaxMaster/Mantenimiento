@@ -1,0 +1,19 @@
+.notifications {
+    position: fixed;
+    bottom: 0;
+    z-index: 10;
+}
+
+.notifications .card {
+    padding: 10px 15px;
+    margin-top: 7px;
+}
+
+.notifications h2 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.notifications p {
+    margin: 0;
+}

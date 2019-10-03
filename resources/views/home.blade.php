@@ -2,9 +2,9 @@
 
 @section('title', 'Artículos maestros')
 
-{{-- @section('css')
-    <link rel="stylesheet" href="{{ asset(env("css")."auth.css") }}">        
-@endsection --}}
+@section('css')
+    <link rel="stylesheet" href="{{ asset(env("css")."home.css") }}">        
+@endsection
 
 @section('content')
     <h1>Dashboard</h1>
@@ -28,6 +28,24 @@
                 @endfor
             </ul>
         </section>
+
+        <div class="notifications">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <h2 class="notif-title danger">Vencido</h2>
+                <p>This is a notif #1</p>
+            </div>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <h2 class="notif-title warning">Por vencer</h2>
+                <p>This is a notif #2</p>
+            </div>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <h2 class="notif-title danger">Vencido</h2>
+                <p>This is a notif #3</p>
+            </div>
+        </div>
 
     </main>
 @endsection

@@ -8,7 +8,7 @@ class WebController extends Controller {
     
     //Carga la página principal
     public function loadHome() {
-        return "Este es el home jaja";
+        return view("home");
     }
 
     //Carga la página de sucursales

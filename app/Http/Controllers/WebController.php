@@ -33,7 +33,7 @@ class WebController extends Controller {
 
     //Carga la página de los gráficos
     public function loadGraficos() {
-        return "Este es el home jaja";
+        return view("graficos");
     }
 
 }

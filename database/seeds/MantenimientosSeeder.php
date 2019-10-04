@@ -1,9 +1,9 @@
 <?php
 
-use App\User;
+use App\Mantenimientos;
 use Illuminate\Database\Seeder;
 
-class UserSeeder extends Seeder
+class MantenimientosSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,6 @@ class UserSeeder extends Seeder
      * @return void
      */
     public function run() {
-        User::addAdmin();
-        factory(User::class, 5)->create();        
+        factory(Mantenimientos::class, 20)->create();                                
     }
 }

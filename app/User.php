@@ -50,4 +50,12 @@ class User extends Authenticatable
             'remember_token' => Str::random(10),
         ]);
     }
+
+    // Relaciones
+    
+    public function mantenimientos() {
+        return $this->hasMany(Mantenimientos::class, 'usuario_id');
+    }
+    
+    // -> Relaciones
 }

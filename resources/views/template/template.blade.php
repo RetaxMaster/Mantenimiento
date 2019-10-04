@@ -33,27 +33,22 @@
 
             <div class="collapse navbar-collapse" id="Navbar">
                 <ul class="navbar-nav ml-auto">
-                    {{-- <li class="nav-item">
-                        <a class="nav-link" href="{{ route("album") }}">Álbum de fotos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ isset($home) && $home ? "" : route("home")."/" }}#Organizadores">Organizadores</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ isset($home) && $home ? "" : route("home")."/" }}#Patrocinadores">Patrocinadores</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ isset($home) && $home ? "" : route("home")."/" }}#Contactanos">Contáctanos</a>
-                    </li> --}}
                     @if (auth()->user())
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href="{{ route("purchased") }}">Mis fotos</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route("sucursales") }}">Sucursales</a>
                         </li>
-                        @if (auth()->user()->isAdmin())
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route("admin") }}">Administrar página</a>
-                            </li>
-                        @endif --}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route("master") }}">Artículos maestros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route("articulos") }}">Artículos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route("reportes") }}">Reportes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route("graficos") }}">Gráficos</a>
+                        </li>
                         <li class="nav-item">
                             <form action="{{ route("logout") }}" method="post">
                                 @csrf

@@ -1,6 +1,6 @@
 @extends('../template/template')
 
-@section('title', 'Artículos maestros')
+@section('title', 'Artículos')
 
 {{-- @section('css')
     <link rel="stylesheet" href="{{ asset(env("css")."auth.css") }}">        

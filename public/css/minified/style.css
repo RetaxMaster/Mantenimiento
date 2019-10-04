@@ -4,6 +4,12 @@
     padding: 0 50px;
 }
 
+.navbar form button {
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
 .nav-item {
     display: flex;
     align-items: center;
@@ -16,6 +22,15 @@
 
 .navbar-dark .navbar-nav .nav-link {
     color: #fff;
+    transition: 0.3s all ease;
+    -webkit-transition: 0.3s all ease;
+    -moz-transition: 0.3s all ease;
+    -ms-transition: 0.3s all ease;
+    -o-transition: 0.3s all ease;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    background: #2d2d2d;
 }
 
 /* ->Modificando los estilos de bootstrap */

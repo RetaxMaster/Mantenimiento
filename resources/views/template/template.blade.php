@@ -52,7 +52,7 @@
                         <li class="nav-item">
                             <form action="{{ route("logout") }}" method="post">
                                 @csrf
-                                <button class="nav-link" type="submit"><i class="fas fa-power-off"></i></button>
+                                <button class="nav-link" type="submit" title="Cerrar sesión"><i class="fas fa-power-off"></i></button>
                             </form>
                         </li>
                     @else
@@ -80,6 +80,8 @@
     </footer>
 
     @routes
+    {{-- jQuery --}}
+    <script src="{{ asset(env("js")."lib/jquery.js") }}"></script>
     {{-- Bootstrap --}}
     <script src="{{ asset(env("js")."lib/bootstrap.min.js") }}"></script>
     {{-- FontAwesome Free --}}

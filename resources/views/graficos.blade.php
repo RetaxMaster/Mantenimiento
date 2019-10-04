@@ -1,5 +1,12 @@
 @extends('../template/template')
 
+@section('title', 'Gráficos')
+
+@section('scripts')
+    <script src="{{ asset(env("js")."lib/highcharts.js") }}"></script>
+    <script src="{{ asset(env("js")."input/scripts/graficos.js") }}"></script>
+@endsection
+
 @section('content')
     <h1>Dashboard</h1>
     <h2>Gráficos</h2>
@@ -19,7 +26,7 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-12 col-sm-6 text-center">
-                    <img style="max-width: 100%;" src="https://images.vexels.com/media/users/3/129856/isolated/lists/83b8b3382c3f8f1ac4a8b16c5388360f-colorido-grafico-circular-de-cuatro-partes.png" alt="Gráfica">
+                    <div id="realizados"></div>
                 </div>
             </div>
         </section>
@@ -38,7 +45,7 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-12 col-sm-6 text-center">
-                    <img style="max-width: 100%;" src="https://images.vexels.com/media/users/3/129856/isolated/lists/83b8b3382c3f8f1ac4a8b16c5388360f-colorido-grafico-circular-de-cuatro-partes.png" alt="Gráfica">
+                    <div id="vencer"></div>
                 </div>
             </div>
         </section>
@@ -57,7 +64,7 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-12 col-sm-6 text-center">
-                    <img style="max-width: 100%;" src="https://images.vexels.com/media/users/3/129856/isolated/lists/83b8b3382c3f8f1ac4a8b16c5388360f-colorido-grafico-circular-de-cuatro-partes.png" alt="Gráfica">
+                    <div id="vencidos"></div>
                 </div>
             </div>
         </section>

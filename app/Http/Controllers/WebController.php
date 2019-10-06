@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Master;
 use App\Sectores;
 use App\Sucursales;
 use Illuminate\Http\Request;
@@ -23,7 +24,9 @@ class WebController extends Controller {
 
     //Carga la página de artículos maestros
     public function loadMaster() {
-        return view("master");
+        $masters = Master::get();
+        $variables = compact("masters");
+        return view("master", $variables);
     }
 
     //Carga la página de articulos individuales

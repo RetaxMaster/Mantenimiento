@@ -58,7 +58,7 @@
             <h2>Tus sectores</h2>
             <ul class="list">
                 @forelse ($sectores as $sector) 
-                <li id="suc-{{ $sector->id }}">
+                <li id="sec-{{ $sector->id }}">
                     <span>{{ $sector->name }}</span>
                     <div class="delete">
                         <i class="fas fa-times"></i>

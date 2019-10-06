@@ -39,28 +39,36 @@
         <section class="card col-12 pad mb-4">
             <h2>Tus sucursales</h2>
             <ul class="list">
-                @for ($i = 0; $i < 20; $i++) 
-                <li>
-                    <span>Nombre de la sucursal</span>
+                @forelse ($sucursales as $sucursal) 
+                <li id="suc-{{ $sucursal->id }}">
+                    <span>{{ $sucursal->name }}</span>
                     <div class="delete">
                         <i class="fas fa-times"></i>
                     </div>
                 </li>
-                @endfor
+                @empty
+                <div class="col-12 text-center my-3 text-muted">
+                    No hemos encontrado ningúna sucursal
+                </div>
+                @endforelse
             </ul>
         </section>
 
         <section class="card col-12 pad">
             <h2>Tus sectores</h2>
             <ul class="list">
-                @for ($i = 0; $i < 20; $i++) 
-                <li>
-                    <span>Nombre del sector</span>
+                @forelse ($sectores as $sector) 
+                <li id="suc-{{ $sector->id }}">
+                    <span>{{ $sector->name }}</span>
                     <div class="delete">
                         <i class="fas fa-times"></i>
                     </div>
                 </li>
-                @endfor
+                @empty
+                <div class="col-12 text-center my-3 text-muted">
+                    No hemos encontrado ningún sector
+                </div>
+                @endforelse
             </ul>
         </section>
 

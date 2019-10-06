@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Sectores;
+use App\Sucursales;
 use Illuminate\Http\Request;
 
 class WebController extends Controller {
@@ -13,7 +15,10 @@ class WebController extends Controller {
 
     //Carga la página de sucursales
     public function loadSucursales() {
-        return view("sucursales");
+        $sucursales = Sucursales::get();
+        $sectores = Sectores::get();
+        $variables = compact("sucursales", "sectores");
+        return view("sucursales", $variables);
     }
 
     //Carga la página de artículos maestros

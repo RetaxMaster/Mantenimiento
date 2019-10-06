@@ -25,10 +25,18 @@
 
         <section class="card col-12 pad mb-4">
             <h2>Sucursales</h2>
-            <form action="add-sucursal" method="post">
-                <div class="form-group">
+            <form action="add-sucursal" method="post" class="row">
+                <div class="form-group col-12 col-sm-6">
                     <label for="sucursal-name">Nombre de la sucursal</label>
                     <input type="text" class="form-control" placeholder="Nombre de la sucursal" id="sucursal-name" name="sucursal-name">
+                </div>
+                <div class="form-group col-12 col-sm-6">
+                    <label for="sector-sucursal-name">Sector de la sucursal</label>
+                    <select id="sector-sucursal-name" name="sector-sucursal-name" class="form-control">
+                        @foreach ($sectores as $sector)
+                        <option value="{{ $sector->id }}">{{ $sector->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="button-container align-right">
                     <button type="submit" class="btn btn-primary">Agregar</button>
@@ -48,7 +56,7 @@
                 </li>
                 @empty
                 <div class="col-12 text-center my-3 text-muted">
-                    No hemos encontrado ningúna sucursal
+                    No hemos encontrado ningún usuario
                 </div>
                 @endforelse
             </ul>

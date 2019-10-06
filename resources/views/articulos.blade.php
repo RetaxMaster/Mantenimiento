@@ -16,17 +16,17 @@
                 <div class="form-group col-12 col-sm-6">
                     <label for="articulo-name">Elige un artículo</label>
                     <select name="articulo-name" id="articulo-name" class="form-control">
-                        @for ($i = 0; $i < 10; $i++)
-                        <option value="{{ $i }}">Articulo</option>
-                        @endfor
+                        @foreach ($masters as $master)
+                        <option value="{{ $master->id }}">{{ $master->name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group col-12 col-sm-6">
                     <label for="sucursal-name">¿A qué sucursal irá?</label>
                     <select name="sucursal-name" id="sucursal-name" class="form-control">
-                        @for ($i = 0; $i < 10; $i++)
-                        <option value="{{ $i }}">Sucursal</option>
-                        @endfor
+                        @foreach ($sucursales as $sucursal)
+                        <option value="{{ $sucursal->id }}">{{ $sucursal->name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group col-12 col-sm-6">
@@ -48,17 +48,24 @@
                 <div class="form-group col-12">
                     <label>Elige a las personas encargadas del mantenimiento de este artículo</label>
                     <div class="checkboxes">
-                        @for ($i = 0; $i < 10; $i++)
+                        
+                        @forelse ($users as $user)
                         <div class="custom-control custom-control-inline custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="user-{{ $i }}">
-                            <label class="custom-control-label" for="user-{{ $i }}">Nombre del usuario</label>
+                            <input type="checkbox" class="custom-control-input" id="user-{{ $user->id }}">
+                            <label class="custom-control-label" for="user-{{ $user->id }}">{{ $user->username }}</label>
                         </div>
-                        @endfor
+                        @empty
+                        <div class="col-12 text-center my-3 text-muted">
+                            No hemos encontrado ningúna sucursal
+                        </div>
+                        @endforelse
                     </div>
                 </div>
+                @if (count($users) > 0)
                 <div class="button-container align-right">
                     <button type="submit" class="btn btn-primary">Agregar</button>
                 </div>
+                @endif
             </form>
         </section>
 
@@ -66,11 +73,12 @@
             <h2>Tus artículos</h2>
             <div class="row">
                 <div class="form-group col-12 col-sm-6">
-                    <label for="sort-by-sucursal-name">¿A qué sucursal irá?</label>
+                    <label for="sort-by-sucursal-name">¿En cuál sucursal quieres buscar?</label>
                     <select id="sort-by-sucursal-name" class="form-control">
-                        @for ($i = 0; $i < 10; $i++)
-                        <option value="{{ $i }}">Sucursal</option>
-                        @endfor
+                        <option value="0">General</option>
+                        @foreach ($sucursales as $sucursal)
+                        <option value="{{ $sucursal->id }}">{{ $sucursal->name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group col-12 col-sm-6">
@@ -79,14 +87,18 @@
                 </div>
             </div>
             <ul class="list">
-                @for ($i = 0; $i < 20; $i++) 
-                <li>
-                    <span>Nombre del artículo</span>
+                @forelse ($articulos as $articulo) 
+                <li id="mas-{{ $articulo->id }}">
+                    <span>{{ $articulo->master->name }}</span>
                     <div class="delete">
                         <i class="fas fa-times"></i>
                     </div>
                 </li>
-                @endfor
+                @empty
+                <div class="col-12 text-center my-3 text-muted">
+                    No hemos encontrado ningún artículo
+                </div>
+                @endforelse
             </ul>
         </section>
 

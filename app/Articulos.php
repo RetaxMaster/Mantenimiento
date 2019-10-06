@@ -14,7 +14,7 @@ class Articulos extends Model {
         return $this->belongsTo(Sucursales::class, 'sucursal_id');
     }
 
-    public function maestro() {
+    public function master() {
         return $this->belongsTo(Master::class, 'master_id');
     }
 

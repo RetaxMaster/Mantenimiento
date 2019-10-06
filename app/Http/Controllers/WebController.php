@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Articulos;
 use App\Master;
 use App\Sectores;
 use App\Sucursales;
+use App\User;
 use Illuminate\Http\Request;
 
 class WebController extends Controller {
@@ -31,7 +33,12 @@ class WebController extends Controller {
 
     //Carga la página de articulos individuales
     public function loadArticulos() {
-        return view("articulos");
+        $articulos = Articulos::get();
+        $sucursales = Sucursales::get();
+        $masters = Master::get();
+        $users = User::where("rol", "=", "1")->get();
+        $variables = compact("articulos", "users", "sucursales", "masters");
+        return view("articulos", $variables);
     }
 
     //Carga la página de reportes

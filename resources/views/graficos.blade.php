@@ -18,9 +18,9 @@
                 <div class="form-group col-12 col-sm-6">
                     <select name="mantenimiento-realizado" id="mantenimiento-realizado" class="form-control">
                         <option value="0">General</option>
-                        @for ($i = 1; $i <= 10; $i++)
-                        <option value="{{ $i }}">Sucursal</option>
-                        @endfor
+                        @foreach ($sucursales as $sucursal)
+                        <option value="{{ $sucursal->id}}">{{ $sucursal->name }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -37,9 +37,9 @@
                 <div class="form-group col-12 col-sm-6">
                     <select name="mantenimiento-realizado" id="mantenimiento-realizado" class="form-control">
                         <option value="0">General</option>
-                        @for ($i = 1; $i <= 10; $i++)
-                        <option value="{{ $i }}">Sucursal</option>
-                        @endfor
+                        @foreach ($sucursales as $sucursal)
+                        <option value="{{ $sucursal->id}}">{{ $sucursal->name }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -56,9 +56,9 @@
                 <div class="form-group col-12 col-sm-6">
                     <select name="mantenimiento-realizado" id="mantenimiento-realizado" class="form-control">
                         <option value="0">General</option>
-                        @for ($i = 1; $i <= 10; $i++)
-                        <option value="{{ $i }}">Sucursal</option>
-                        @endfor
+                        @foreach ($sucursales as $sucursal)
+                        <option value="{{ $sucursal->id}}">{{ $sucursal->name }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>

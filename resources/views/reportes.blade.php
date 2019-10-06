@@ -17,9 +17,9 @@
                 <div class="form-group col-12 col-sm-6">
                     <label for="articulo-maestro-name">Elige un artículo</label>
                     <select name="articulo-maestro-name" id="articulo-maestro-name" class="form-control">
-                        @for ($i = 0; $i < 10; $i++)
-                        <option value="{{ $i }}">Artículo</option>
-                        @endfor
+                        @foreach ($masters as $master)
+                        <option value="{{ $master->id}}">{{ $master->name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="button-container">
@@ -34,17 +34,17 @@
                 <div class="form-group col-12 col-sm-6">
                     <label for="sucursal-name">Elige una sucursal</label>
                     <select name="sucursal-name" id="sucursal-name" class="form-control">
-                        @for ($i = 0; $i < 10; $i++)
-                        <option value="{{ $i }}">Sucursal</option>
-                        @endfor
+                        @foreach ($sucursales as $sucursal)
+                        <option value="{{ $sucursal->id}}">{{ $sucursal->name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group col-12 col-sm-6">
                     <label for="articulo-name">Elige un artículo</label>
                     <select name="articulo-name" id="articulo-name" class="form-control">
-                        @for ($i = 0; $i < 10; $i++)
-                        <option value="{{ $i }}">Artículo</option>
-                        @endfor
+                        @foreach ($masters as $master)
+                        <option value="{{ $master->id}}">{{ $master->name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="button-container">
@@ -59,9 +59,9 @@
                 <div class="form-group col-12 col-sm-6">
                     <label for="only-sucursal-name">Elige una sucursal</label>
                     <select name="only-sucursal-name" id="only-sucursal-name" class="form-control">
-                        @for ($i = 0; $i < 10; $i++)
-                        <option value="{{ $i }}">Sucursal</option>
-                        @endfor
+                        @foreach ($sucursales as $sucursal)
+                        <option value="{{ $sucursal->id}}">{{ $sucursal->name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="button-container">

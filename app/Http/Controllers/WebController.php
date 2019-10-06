@@ -43,12 +43,17 @@ class WebController extends Controller {
 
     //Carga la página de reportes
     public function loadReportes() {
-        return view("reportes");
+        $sucursales = Sucursales::get();
+        $masters = Master::get();
+        $variables = compact("sucursales", "masters");
+        return view("reportes", $variables);
     }
 
     //Carga la página de los gráficos
     public function loadGraficos() {
-        return view("graficos");
+        $sucursales = Sucursales::get();
+        $variables = compact("sucursales");
+        return view("graficos", $variables);
     }
 
 }

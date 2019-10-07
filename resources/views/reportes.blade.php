@@ -32,7 +32,8 @@
 
         <section class="card col-12 pad mb-4">
             <h3>Reportes de artículos por sucursal</h3>
-            <form action="add-sector" method="post" class="row">
+            <form action="{{ route("generatePDFSucursalReport") }}" method="post" class="row">
+                @csrf
                 <div class="form-group col-12 col-sm-6">
                     <label for="sucursal-name">Elige una sucursal</label>
                     <select name="sucursal-name" id="sucursal-name" class="form-control">

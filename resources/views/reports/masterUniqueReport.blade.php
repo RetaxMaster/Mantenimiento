@@ -40,8 +40,8 @@
                 <tr>
                     <th scope="row">{{ $info["name"] }}</th>
                     <td>{{ $info["cantidad"] }}</td>
-                    <td>{{ $info["costos_individual"] }}</td>
-                    <td>{{ $info["costos"] }}</td>
+                    <td>{{ parse_money($info["costos_individual"]) }}</td>
+                    <td>{{ parse_money($info["costos"]) }}</td>
                     <td>{{ $info["mantenimientos_hechos"] }}</td>
                     <td>{{ $info["mantenimientos_vencidos"] }}</td>
                 </tr>

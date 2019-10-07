@@ -58,8 +58,9 @@ class WebController extends Controller {
 
     //Tests de la página
     public function test() {
-        $pdf = PDF::loadView("reports/report");
-        return $pdf->stream();
+        $articulos = Sucursales::find(1)->articulos->where("master_id", "=", "1")->first();
+        $v = compact("articulos");
+        return view("reports/sucursalReport", $v);
     }
 
 }

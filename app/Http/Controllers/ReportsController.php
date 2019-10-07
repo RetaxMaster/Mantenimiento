@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class ReportsController extends Controller {
     
+    //Genera reportes de PDF para los artículos maestros
     public function generatePDFMasterReport() {
         $report = request("articulo-maestro-name");
         $view = $report == 0 ? "reports/masterReport" : "reports/masterUniqueReport";
@@ -61,6 +62,19 @@ class ReportsController extends Controller {
 
         $variables = compact("master", "info");
         $pdf = PDF::loadView($view, $variables);
+        return $pdf->stream();
+    }
+
+    //Genera reportes PDF para los artículos por sucursal
+    public function generatePDFSucursalReport() {
+
+        $sucursal_name = request("sucursal-name");
+        $articulo_name = request("articulo-name");
+
+        $articulos = Sucursales::find(1)->articulos->where("master_id", "=", "1")->first();
+
+        $variables = compact("articulos");
+        $pdf = PDF::loadView("reports/sucursalReport", $variables);
         return $pdf->stream();
     }
 

@@ -29,9 +29,9 @@ Route::get('/test', "WebController@test")->name("test");
 
 Route::post('/generatePDFMasterReport', "ReportsController@generatePDFMasterReport")->name("generatePDFMasterReport");
 
+Route::post('/generatePDFSucursalReport', "ReportsController@generatePDFSucursalReport")->name("generatePDFSucursalReport");
+
 // -> Reportes
-
-
 
 Auth::routes([
     "register" => false

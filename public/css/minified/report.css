@@ -10,3 +10,11 @@ span  {
     font-weight: bold;
     margin-bottom: 15px;
 }
+
+.image-container {
+    text-align: center;
+}
+
+.image-container img {
+    width: 150px;
+}

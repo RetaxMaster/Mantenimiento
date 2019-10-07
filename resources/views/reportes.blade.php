@@ -58,7 +58,8 @@
 
         <section class="card col-12 pad mb-4">
             <h3>Reportes de historial de mantenimientos por sucursal</h3>
-            <form action="add-sector" method="post" class="row">
+            <form action="{{ route("generatePDFHistorialReport") }}" method="post" class="row">
+                @csrf
                 <div class="form-group col-12 col-sm-6">
                     <label for="only-sucursal-name">Elige una sucursal</label>
                     <select name="only-sucursal-name" id="only-sucursal-name" class="form-control">

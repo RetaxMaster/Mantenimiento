@@ -78,4 +78,13 @@ class ReportsController extends Controller {
         return $pdf->stream();
     }
 
+    //Genera reportes PDF para el historial de mantenimientos
+    public function generatePDFHistorialReport() {
+        $only_sucursal_name = request("only-sucursal-name");
+        $sucursal = Sucursales::find($only_sucursal_name);
+        $variables = compact("sucursal");
+        $pdf = PDF::loadView("reports/historialReport", $variables);
+        return $pdf->stream();
+    }
+
 }

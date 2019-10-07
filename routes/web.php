@@ -31,6 +31,8 @@ Route::post('/generatePDFMasterReport', "ReportsController@generatePDFMasterRepo
 
 Route::post('/generatePDFSucursalReport', "ReportsController@generatePDFSucursalReport")->name("generatePDFSucursalReport");
 
+Route::post('/generatePDFHistorialReport', "ReportsController@generatePDFHistorialReport")->name("generatePDFHistorialReport");
+
 // -> Reportes
 
 Auth::routes([

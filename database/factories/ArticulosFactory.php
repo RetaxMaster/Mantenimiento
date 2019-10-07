@@ -12,6 +12,7 @@ $factory->define(Articulos::class, function (Faker $faker) {
         "picture" => "logo.png", 
         "manual" => null, 
         "costo" => rand(50, 500), 
+        "cantidad" => rand(5, 50), 
         "fecha_mantenimiento" => $faker->date("Y-m-d", "2022-08-15")
     ];
 });

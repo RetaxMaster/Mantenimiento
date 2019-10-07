@@ -19,8 +19,10 @@ class CreateArticulosTable extends Migration
             $table->bigInteger("sucursal_id")->unsigned(); // <- Foreign
             $table->string("picture")->default("logo.png");
             $table->string("manual")->nullable()->default(null);
-            $table->string("costo");
+            $table->double("costo");
+            $table->integer("cantidad");
             $table->date("fecha_mantenimiento");
+            $table->tinyInteger("mantenimiento_hecho")->default(0);
 
             $table->foreign("master_id")->references("id")->on("masters");
             $table->foreign("sucursal_id")->references("id")->on("sucursales");

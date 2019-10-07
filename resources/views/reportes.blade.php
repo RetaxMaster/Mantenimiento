@@ -8,15 +8,17 @@
 
 @section('content')
     <h1>Dashboard</h1>
-    <h2>¡Obtén los resportes!</h2>
+    <h2>¡Obtén los reportes!</h2>
     <main role="main" class="row">
 
         <section class="card col-12 pad mb-4">
             <h3>Reportes de artículos maestros</h3>
-            <form action="add-sector" method="post" class="row">
+            <form action="{{ route("generatePDFMasterReport") }}" method="post" class="row">
+                @csrf
                 <div class="form-group col-12 col-sm-6">
                     <label for="articulo-maestro-name">Elige un artículo</label>
                     <select name="articulo-maestro-name" id="articulo-maestro-name" class="form-control">
+                        <option value="0">General</option>
                         @foreach ($masters as $master)
                         <option value="{{ $master->id}}">{{ $master->name }}</option>
                         @endforeach

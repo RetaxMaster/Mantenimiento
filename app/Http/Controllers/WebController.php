@@ -56,4 +56,10 @@ class WebController extends Controller {
         return view("graficos", $variables);
     }
 
+    //Tests de la página
+    public function test() {
+        $pdf = PDF::loadView("reports/report");
+        return $pdf->stream();
+    }
+
 }

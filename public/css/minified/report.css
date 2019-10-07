@@ -1,0 +1,12 @@
+h1 {
+    text-align: center;
+}
+
+span  {
+    display: inline-block;
+}
+
+.label {
+    font-weight: bold;
+    margin-bottom: 15px;
+}

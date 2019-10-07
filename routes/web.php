@@ -23,6 +23,14 @@ Route::get('/reportes', "WebController@loadReportes")->name("reportes");
 
 Route::get('/graficos', "WebController@loadGraficos")->name("graficos");
 
+Route::get('/test', "WebController@test")->name("test");
+
+// Reportes
+
+Route::post('/generatePDFMasterReport', "ReportsController@generatePDFMasterReport")->name("generatePDFMasterReport");
+
+// -> Reportes
+
 
 
 Auth::routes([

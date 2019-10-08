@@ -58,9 +58,18 @@ class WebController extends Controller {
 
     //Tests de la página
     public function test() {
-        $articulos = Sucursales::find(1)->articulos->where("master_id", "=", "1")->first();
-        $v = compact("articulos");
-        return view("reports/sucursalReport", $v);
+        $sucursal = 1;
+        $articulos = ($sucursal == 0) ? Articulos::get() : Articulos::where("sucursal_id", "=", $sucursal)->get();
+
+        $start_date = date("Y-m-d");
+        $end_date = add_time($start_date, env("DEATH_DAYS") . " días");
+
+        $data["total"] = $articulos->count();
+        $data["realizados"] = $articulos->where("mantenimiento_hecho", "=", 1)->count();
+        $data["vencidos"] = $articulos->where("mantenimiento_hecho", "=", 2)->count();
+        $data["porVencer"] = $articulos->where("mantenimiento_hecho", "=", 0)->whereBetween("fecha_mantenimiento", [$start_date, $end_date])->count();
+        $data["pendientes"] = $articulos->where("mantenimiento_hecho", "=", 0)->count();
+        return json_encode($data);
     }
 
 }

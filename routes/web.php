@@ -25,6 +25,12 @@ Route::get('/graficos', "WebController@loadGraficos")->name("graficos");
 
 Route::get('/test', "WebController@test")->name("test");
 
+// Llamadas Ajax
+
+Route::post('/getChartData', "ReportsController@getChartData")->name("getChartData");
+
+// -> Llamadas Ajax
+
 // Reportes
 
 Route::post('/generatePDFMasterReport', "ReportsController@generatePDFMasterReport")->name("generatePDFMasterReport");

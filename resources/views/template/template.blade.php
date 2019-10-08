@@ -89,6 +89,9 @@
     {{-- Modificadores de algunas clases de JavaScript --}}
     <script src="{{ asset(env("js")."lib/modifiers.js") }}"></script>
 
+    <script src="{{ asset(env("js")."input/functions/modal.js") }}"></script>
+    <script src="{{ asset(env("js")."input/scripts/scripts.js") }}"></script>
+
     <script>
         
     var js = "{{ asset(env("js")) }}";

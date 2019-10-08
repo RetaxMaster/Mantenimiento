@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Articulos;
 use App\Master;
 use App\Sucursales;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -85,6 +86,22 @@ class ReportsController extends Controller {
         $variables = compact("sucursal");
         $pdf = PDF::loadView("reports/historialReport", $variables);
         return $pdf->stream();
+    }
+
+    //Obtiene los datos para las gráficas
+    public function getChartData() {
+        $sucursal = request("sucursal");
+        $articulos = ($sucursal == 0) ? Articulos::get() : Articulos::where("sucursal_id", "=", $sucursal)->get();
+
+        $start_date = date("Y-m-d");
+        $end_date = add_time($start_date, "3 días");
+
+        $data["total"] = $articulos->count();
+        $data["realizados"] = $articulos->where("mantenimiento_hecho", "=", 1)->count();
+        $data["vencidos"] = $articulos->where("mantenimiento_hecho", "=", 2)->count();
+        $data["porVencer"] = $articulos->where("mantenimiento_hecho", "=", 0)->whereBetween("fecha_mantenimiento", [$start_date, $end_date])->count();
+        $data["pendientes"] = $articulos->where("mantenimiento_hecho", "=", 0)->count();
+        return json_encode($data);
     }
 
 }

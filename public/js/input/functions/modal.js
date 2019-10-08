@@ -1,32 +1,20 @@
-// Funciones
-
-const modalFunctions = {
-    closeModal: () => {
-        const modal = document.querySelector("#modal");
-        modal.classList.remove("show");
-
-        setTimeout(() => {
-            const cards = modal.querySelectorAll(".modal-card");
-            cards.forEach(e => e.style.display = "none");
-        }, 300);
-    },
-
-    showModal: e => {
-        document.querySelector(`#${e}`).style.display = "block";
-        document.querySelector("#modal").classList.add("show");
-    },
-
-    loading: (status, tag) => {
-        if (status) {
-            document.querySelector("#loading .tag").textContent = tag;
-            modalFunctions.showModal("loading");
-        } else {
-            modalFunctions.closeModal();
-        }
-    }
+function showModal(card) {
+    $("#" + card).show();
+    $(".modal").addClass("show");
 }
 
+function closeModal() {
+    $(".modal").removeClass("show");
+    setTimeout(function () {
+        $(".modal .modal-card").hide();
+    }, 300);
+}
 
-// -> Funciones
-
-export default modalFunctions
+function loading(status, tag) {
+    if (status) {
+        $("#loading .tag").text(tag);
+        showModal("loading");
+    } else {
+        closeModal();
+    }
+}

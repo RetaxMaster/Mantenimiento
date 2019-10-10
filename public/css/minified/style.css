@@ -33,6 +33,10 @@
     background: #2d2d2d;
 }
 
+.ui-datepicker-trigger {
+    display: none;
+}
+
 /* ->Modificando los estilos de bootstrap */
 
 /* Estilos generales */

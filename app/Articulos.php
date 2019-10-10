@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Articulos extends Model {
 
-    protected $fillable = ["master_id", "sucursal_id", "picture", "manual", "costo", "fecha_mantenimiento", "mantenimiento_hecho"];
+    protected $fillable = ["master_id", "sucursal_id", "picture", "manual", "costo", "cantidad", "fecha_mantenimiento", "mantenimiento_hecho"];
 
     // Relaciones
     

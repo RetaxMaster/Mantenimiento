@@ -2,38 +2,27 @@
 
 namespace App\Classes;
 
+use Illuminate\Support\Facades\Storage;
+
 class RetaxMaster {
     
     //Sube una imagen
-    public static function uploadImage(object $image) : array {
+    public static function uploadImage(object $image, string $folder) : array {
         //Primero subo la imagen
         $supported_files = ["image/jpeg", "image/png", "image/gif"];
-        return self::uploadFile($image, "images/uploaded_images/", $supported_files);
-    }
-
-    //Sube un video
-    public static function uploadVideo(object $video) : array {
-        //Primero subo la imagen
-        $supported_files = ["video/mpeg", "video/mp4", "video/ogg", "video/webm", "video/x-ms-wmv"];
-        return self::uploadFile($video, "videos/uploaded_videos/", $supported_files);
+        return self::uploadFile($image, $folder, $supported_files);
     }
 
     //Sube un archivo
-    public static function uploadFile(object $file, string $folder, array $supported_files = ["application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.ms-excel", "text/csv"]) : array {
+    public static function uploadFile(object $file, string $folder, array $supported_files = ["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"]) : array {
         $response = [];
         $originalName = $file->getClientOriginalName();
         $extension = get_image_extension($originalName);
         $newName = str_shuffle(time().random_string(5)).".".$extension;
-        $path = public_path()."/media/".$folder;
 
         if (in_array($file->getMimeType(), $supported_files)) {
             //Ahora si subo la imagen
-            $file->move($path, $newName);
-
-            //En caso de que sea imagen la redimensiono
-            $image_extensions = ["jpg", "jpeg", "png", "gif"];
-            if(in_array($extension, $image_extensions))
-                resize_image($path.$newName, 300);
+            Storage::putFileAs($folder, $file, $newName);
 
             $response["name"] = $newName;
         }

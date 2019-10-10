@@ -41,6 +41,10 @@ Route::post('/addMaster', "ProcessController@addMaster")->name("addMaster");
 
 Route::post('/deleteMaster', "ProcessController@deleteMaster")->name("deleteMaster");
 
+Route::post('/addArticulo', "ProcessController@addArticulo")->name("addArticulo");
+
+Route::post('/deleteArticulo', "ProcessController@deleteArticulo")->name("deleteArticulo");
+
 // -> Llamadas Ajax
 
 // Reportes

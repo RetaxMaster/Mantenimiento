@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Master;
 use App\Sectores;
 use App\Sucursales;
 use Illuminate\Http\Request;
@@ -48,6 +49,27 @@ class ProcessController extends Controller {
     public function deleteSector() {
         $id = request("id");
         Sectores::destroy($id);
+        return json_encode([
+            "status" => "true"
+        ]);
+    }
+
+    //Agrega un artículo maestro
+    public function addMaster() {
+        $articuloName = request("articuloName");
+        $master = Master::create([
+            "name" => $articuloName
+        ]);
+
+        return json_encode([
+            "master" => $master
+        ]);
+    }
+
+    //Agrega un artículo maestro
+    public function deleteMaster() {
+        $id = request("id");
+        Master::destroy($id);
         return json_encode([
             "status" => "true"
         ]);

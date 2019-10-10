@@ -29,6 +29,14 @@ Route::get('/test', "WebController@test")->name("test");
 
 Route::post('/getChartData', "ReportsController@getChartData")->name("getChartData");
 
+Route::post('/addSector', "ProcessController@addSector")->name("addSector");
+
+Route::post('/addSucursal', "ProcessController@addSucursal")->name("addSucursal");
+
+Route::post('/deleteSucursal', "ProcessController@deleteSucursal")->name("deleteSucursal");
+
+Route::post('/deleteSector', "ProcessController@deleteSector")->name("deleteSector");
+
 // -> Llamadas Ajax
 
 // Reportes

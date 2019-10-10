@@ -18,7 +18,7 @@ class CreateSucursalesTable extends Migration
             $table->string("name");
             $table->bigInteger("sector_id")->unsigned(); // <- Foreign
             
-            $table->foreign("sector_id")->references("id")->on("sectores");
+            $table->foreign("sector_id")->references("id")->on("sectores")->onDelete("cascade");
             $table->timestamps();
         });
     }

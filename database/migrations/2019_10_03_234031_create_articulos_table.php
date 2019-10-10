@@ -24,8 +24,8 @@ class CreateArticulosTable extends Migration
             $table->date("fecha_mantenimiento");
             $table->tinyInteger("mantenimiento_hecho")->default(0);
 
-            $table->foreign("master_id")->references("id")->on("masters");
-            $table->foreign("sucursal_id")->references("id")->on("sucursales");
+            $table->foreign("master_id")->references("id")->on("masters")->onDelete("cascade");
+            $table->foreign("sucursal_id")->references("id")->on("sucursales")->onDelete("cascade");
             $table->timestamps();
         });
     }

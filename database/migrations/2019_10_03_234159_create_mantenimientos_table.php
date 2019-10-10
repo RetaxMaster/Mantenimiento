@@ -18,8 +18,8 @@ class CreateMantenimientosTable extends Migration
             $table->bigInteger("usuario_id")->unsigned(); // <- Foreign
             $table->bigInteger("articulo_id")->unsigned(); // <- Foreign
 
-            $table->foreign("usuario_id")->references("id")->on("users");
-            $table->foreign("articulo_id")->references("id")->on("articulos");
+            $table->foreign("usuario_id")->references("id")->on("users")->onDelete("cascade");
+            $table->foreign("articulo_id")->references("id")->on("articulos")->onDelete("cascade");
             $table->timestamps();
         });
     }

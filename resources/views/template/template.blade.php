@@ -88,6 +88,8 @@
     <script src="{{ asset(env("js")."lib/all.min.js") }}"></script>
     {{-- Modificadores de algunas clases de JavaScript --}}
     <script src="{{ asset(env("js")."lib/modifiers.js") }}"></script>
+    {{-- SweetAlert --}}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script src="{{ asset(env("js")."input/functions/modal.js") }}"></script>
     <script src="{{ asset(env("js")."input/scripts/scripts.js") }}"></script>

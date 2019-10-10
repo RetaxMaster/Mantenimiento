@@ -2,17 +2,31 @@
 
 @section('title', 'Sucursales')
 
-{{-- @section('css')
-    <link rel="stylesheet" href="{{ asset(env("css")."auth.css") }}">        
-@endsection --}}
+@section('scripts')
+    <script src="{{ asset(env("js")."input/scripts/sucursales.js") }}"></script>
+@endsection
 
 @section('content')
+    <div class="modal" id="modal">
+        <div class="modal-main">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-1 close-modal"></div>
+                <div class="col-lg-6 col-md-6 col-sm-10 col-xs-12 close-modal">
+                    <div class="modal-card" id="loading">
+                        <div class="preloader"></div>
+                        <span class="tag">Cargando...</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-1 close-modal"></div>
+            </div>
+        </div>
+    </div>
     <h1>Dashboard</h1>
     <main role="main" class="row">
 
         <section class="card col-12 pad mb-4">
             <h2>Sectores</h2>
-            <form action="add-sector" method="post">
+            <form action="#" method="post" id="addSector">
                 <div class="form-group">
                     <label for="sector-name">Nombre del sector</label>
                     <input type="text" class="form-control" placeholder="Nombre del sector" id="sector-name" name="sector-name">
@@ -25,7 +39,7 @@
 
         <section class="card col-12 pad mb-4">
             <h2>Sucursales</h2>
-            <form action="add-sucursal" method="post" class="row">
+            <form action="#" method="post" class="row" id="addSucursal">
                 <div class="form-group col-12 col-sm-6">
                     <label for="sucursal-name">Nombre de la sucursal</label>
                     <input type="text" class="form-control" placeholder="Nombre de la sucursal" id="sucursal-name" name="sucursal-name">
@@ -46,7 +60,7 @@
 
         <section class="card col-12 pad mb-4">
             <h2>Tus sucursales</h2>
-            <ul class="list">
+            <ul class="list" id="allSucursal">
                 @forelse ($sucursales as $sucursal) 
                 <li id="suc-{{ $sucursal->id }}">
                     <span>{{ $sucursal->name }}</span>
@@ -55,7 +69,7 @@
                     </div>
                 </li>
                 @empty
-                <div class="col-12 text-center my-3 text-muted">
+                <div class="col-12 text-center my-3 text-muted not-found">
                     No hemos encontrado ningún usuario
                 </div>
                 @endforelse
@@ -64,7 +78,7 @@
 
         <section class="card col-12 pad">
             <h2>Tus sectores</h2>
-            <ul class="list">
+            <ul class="list" id="allSectors">
                 @forelse ($sectores as $sector) 
                 <li id="sec-{{ $sector->id }}">
                     <span>{{ $sector->name }}</span>
@@ -73,7 +87,7 @@
                     </div>
                 </li>
                 @empty
-                <div class="col-12 text-center my-3 text-muted">
+                <div class="col-12 text-center my-3 text-muted not-found">
                     No hemos encontrado ningún sector
                 </div>
                 @endforelse

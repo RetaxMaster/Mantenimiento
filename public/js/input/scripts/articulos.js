@@ -117,8 +117,6 @@ $(document).ready(function(){
                 }
 
                 $.post(route("deleteArticulo"), data, function(res) {
-                    console.log(res);
-                    
                     loading(false);
                     res = JSON.parse(res);
                     if(res.status == "true") {
@@ -135,5 +133,48 @@ $(document).ready(function(){
     });
     
     // -> Elimina una sucursal
+
+    // Busca artículos
+    var makeAnotherRequest = true;    
+    $(document).on("keyup", "#search-by-articulo-name", function(e){
+
+        if (makeAnotherRequest) {
+            makeAnotherRequest = false;
+            var query = this.value;
+            var sucursal = $("#sort-by-sucursal-name").val();
+
+            setTimeout(function() {
+                var data = {
+                    _token: $("meta[name='csrf-token']").attr("content"),
+                    query: query,
+                    sucursal: sucursal
+                }
+
+                $.post(route("getArticulos").url(), data, function (res) {
+                    console.log(res);
+                    
+                    res = JSON.parse(res);
+                    if (res.status == "true") {
+                        $("#Articulos > li").remove();
+
+                        Array.from(res.articulos).forEach(function (articulo) {
+                            var element = $('<li id="art-' + articulo.id + '"><span>' + articulo.name + '</span><div class="delete"><i class="fas fa-times"></i></div></li>');
+
+                            $("#Articulos").append(element);
+                        });
+                    } else {
+                        swal("Error", res.responseText, "error");
+                    }
+                }).fail(function(msg) {
+                    console.log(msg.responseText);
+                    
+                });
+                makeAnotherRequest = true;
+            }, 500);
+        }
+    
+    });
+    
+    // -> Busca artículos
 
 });

@@ -151,5 +151,20 @@ class ProcessController extends Controller {
         ]);
     }
     
+    //Obtiene la lista de artículos según los filtros pasados
+    public function getArticulos() {
+        $query = request("query");
+        $sucursal = request("sucursal");
+
+        //Busco las coincidencias en la tabla de artículos maestros, como es posible que traiga más de un artículo
+        $articulos = Master::select(["masters.name", "articulos.id"])->join("articulos", "articulos.master_id", "masters.id")->where("name", "LIKE", "%$query%");
+
+        if($sucursal != 0)
+            $articulos = $articulos->where("sucursal_id", "=", $sucursal);
+
+        $response["articulos"] = $articulos->orderBy("id", "DESC")->get();
+        $response["status"] = "true";
+        return json_encode($response);
+    }
 
 }

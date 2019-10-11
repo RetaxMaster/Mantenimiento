@@ -57,7 +57,7 @@
                         </li>
                     @else
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route("login") }}">
+                        <a class="nav-link not-hover" href="{{ route("login") }}">
                             <div class="beauty-button">
                                 Iniciar sesión
                             </div>

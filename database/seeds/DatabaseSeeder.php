@@ -12,8 +12,8 @@ class DatabaseSeeder extends Seeder
     public function run() {
         $this->truncateTables(["users", "sectores", "sucursales", "masters", "articulos", "mantenimientos"]);
         
-        /* $this->call(UserSeeder::class);
-        $this->call(SectoresSeeder::class);
+        $this->call(UserSeeder::class);
+        /*$this->call(SectoresSeeder::class);
         $this->call(SucursalesSeeder::class);
         $this->call(MasterSeeder::class);
         $this->call(ArticulosSeeder::class);

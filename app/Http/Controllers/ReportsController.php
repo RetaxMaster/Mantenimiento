@@ -9,6 +9,10 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 
 class ReportsController extends Controller {
+
+    public function __construct() {
+        $this->middleware("auth");        
+    }
     
     //Genera reportes de PDF para los artículos maestros
     public function generatePDFMasterReport() {

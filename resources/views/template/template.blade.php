@@ -34,6 +34,7 @@
             <div class="collapse navbar-collapse" id="Navbar">
                 <ul class="navbar-nav ml-auto">
                     @if (auth()->user())
+                        @if (auth()->user()->isPlanificador())
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route("sucursales") }}">Sucursales</a>
                         </li>
@@ -49,9 +50,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route("graficos") }}">Gráficos</a>
                         </li>
+                        @endif
+                        @if (auth()->user()->isAdmin())
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route("register") }}">Registrar usuario</a>
                         </li>
+                        @endif
                         <li class="nav-item">
                             <form action="{{ route("logout") }}" method="post">
                                 @csrf

@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class Ususario
+class Planificador
 {
     /**
      * Handle an incoming request.
@@ -13,9 +13,8 @@ class Ususario
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
-    {
-        if (auth()->user()->rol >= 1) return $next($request);
+    public function handle($request, Closure $next) {
+        if (auth()->user()->rol >= 2) return $next($request);
 
         return redirect()->route("home");
     }

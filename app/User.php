@@ -51,6 +51,22 @@ class User extends Authenticatable
         ]);
     }
 
+    // Roles
+    
+    public function isAdmin() {
+        return auth()->user()->rol >= 3;
+    }
+
+    public function isPlanificador() {
+        return auth()->user()->rol >= 2;
+    }
+
+    public function isUsuario() {
+        return auth()->user()->rol == 1;
+    }
+    
+    // -> Roles
+
     // Relaciones
     
     public function mantenimientos() {

@@ -12,6 +12,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class ProcessController extends Controller {
+
+    public function __construct() {
+        $this->middleware("auth");        
+    }
     
     //Agrega un sector
     public function addSector() {

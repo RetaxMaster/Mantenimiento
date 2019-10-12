@@ -12,6 +12,38 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class WebController extends Controller {
+
+    public function __construct() {
+        $this->middleware("auth");
+
+        /*
+        
+        admin: El rol de admin abarca únicamente a usuarios administradores
+        planificador: El rol de planificador abarca a usuarios planificadores como administradores
+        usuario: El rol de usuario abarca únicamente a usuarios normales
+        
+        */
+
+        //Solo lso administradores puedenc rear usuarios
+        $this->middleware("admin", [
+            "only" => [
+                "loadRegister"
+            ]
+        ]);
+        //Ni planificadores ni administradores pueden acceder a la pantalla de realización de mantenimientos, solo los usuarios que serán los trabajadores que se encanrgarán de decir si ya hicieron el mantenimiento o no
+        $this->middleware("planificador", [
+            "except" => [
+                "loadHome",
+                "downloadManual"
+            ]
+        ]);
+        //Limito a que solo los usuarios puedan
+        $this->middleware("usuario", [
+            "only" => [
+                "loadHome"
+            ]
+        ]);
+    }
     
     //Carga la página principal
     public function loadHome() {

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href="{{ asset(env("site_images")."icon.ico") }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ Storage::url("site_images/logo.png") }}" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset(env("css")."bootstrap.min.css") }}">
     <link rel="stylesheet" href="{{ asset(env("css")."style.css") }}">
@@ -23,8 +23,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <a class="navbar-brand" href="{{ route("home") }}">
                 <div class="image-container">
-                    <span>Logo</span>
-                    {{-- <img src="{{ asset(env("site_images")."/logo.png") }}" alt="Logo"> --}}
+                    <img src="{{ Storage::url("site_images/logo.png") }}" alt="Logo">
                 </div>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar" aria-controls="Navbar" aria-expanded="false" aria-label="Toggle navigation">

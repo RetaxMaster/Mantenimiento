@@ -199,6 +199,7 @@ a:hover .beauty-button {
 
 .image-container img {
     width: 100%;
+    max-width: 50px;
 }
 
 .icon-container {

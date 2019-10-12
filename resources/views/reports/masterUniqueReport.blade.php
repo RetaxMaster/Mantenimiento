@@ -13,7 +13,8 @@
         <h1>Reporte de {{ $master->name }}</h1>
     </header><br><br>
     <div class="info">
-        <span>Cantidad de artículos individuales registrados: <b>{{ \App\Articulos::where("master_id", "=", $master->id)->sum("cantidad") }}</b></span>
+        <span>Cantidad de artículos individuales registrados: <b>{{ \App\Articulos::where("master_id", "=", $master->id)->sum("cantidad") }}</b></span><br>
+        <span>Inversión total en mantenimiento: <b>{{ parse_money(array_sum(array_map(function($info){ return $info["costos"]; }, $info))) }}</b></span>
     </div>
     <span class="label">Detalles del artículo por sucursal:</span>
     <div class="info">

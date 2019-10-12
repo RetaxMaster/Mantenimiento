@@ -13,7 +13,8 @@
         <h1>Reporte general</h1>
     </header><br><br>
     <div class="info">
-        <span>Cantidad de artículos maestros registrados: <b>{{ count($master) }}</b></span>
+        <span>Cantidad de artículos maestros registrados: <b>{{ count($master) }}</b></span><br>
+        <span>Inversión total en mantenimiento: <b>{{ parse_money(array_sum(array_map(function($info){ return $info["inversion"]; }, $info))) }}</b></span>
     </div>
     <span class="label">Todos los artículos maestros registrados:</span>
     <table class="table">
@@ -22,16 +23,18 @@
             <th scope="col">#</th>
             <th scope="col">Nombre</th>
             <th scope="col">Total registrados</th>
+            <th scope="col">Total invertido</th>
             <th scope="col">Fecha de creación</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($master as $master)
+            @foreach ($info as $info)
             <tr>
-                <th scope="row">{{ $master->id }}</th>
-                <td>{{ $master->name }}</td>
-                <td>{{ count($master->articulos) }}</td>
-                <td>{{ get_short_date_from_timestamp($master->created_at) }} {{ get_time_from_timestamp($master->created_at) }}</td>
+                <th scope="row">{{ $info["id"] }}</th>
+                <td>{{ $info["name"] }}</td>
+                <td>{{ $info["cantidad"] }}</td>
+                <td>{{ parse_money($info["inversion"]) }}</td>
+                <td>{{ $info["fecha"] }}</td>
             </tr>
             @endforeach
         </tbody>

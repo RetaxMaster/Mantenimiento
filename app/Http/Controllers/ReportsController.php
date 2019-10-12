@@ -7,6 +7,7 @@ use App\Master;
 use App\Sucursales;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ReportsController extends Controller {
 
@@ -43,7 +44,7 @@ class ReportsController extends Controller {
     
                     //Veríficamos si ya se le dió mantenimiento
     
-                    if ($articulos->mantenimiento_hecho == 1) {
+                    if ($articulos->mantenimiento_hecho == 0) { //TODO: Aqui
                         $mantenimientos_hechos = $cantidad_articulos_a_mantener;
                         $mantenimientos_vencidos = 0;
                         $costo += ($articulos->costo * $articulos->cantidad);
@@ -64,6 +65,19 @@ class ReportsController extends Controller {
                 array_push($info, $columns);
             }
         }
+        else {
+            foreach ($master as $mast) {
+                $columns = [];
+                $columns["id"] = $mast->id;
+                $columns["name"] = $mast->name;
+                $columns["cantidad"] = $mast->articulos->sum("cantidad");
+                $columns["inversion"] = (float) \App\Master::select(DB::raw("sum(articulos.costo * articulos.cantidad) as inversion"))->join("articulos", "articulos.master_id", "masters.id")->where("master_id", "=", $mast->id)->where("mantenimiento_hecho", "=", "0")->first()->inversion; //TODO: Aqui
+                $columns["fecha"] = get_short_date_from_timestamp($mast->created_at). " " . get_time_from_timestamp($mast->created_at);
+
+                array_push($info, $columns);
+
+            }
+        }
 
         $variables = compact("master", "info");
         $pdf = PDF::loadView($view, $variables);
@@ -76,11 +90,17 @@ class ReportsController extends Controller {
         $sucursal_name = request("sucursal-name");
         $articulo_name = request("articulo-name");
 
-        $articulos = Sucursales::find(1)->articulos->where("master_id", "=", "1")->first();
+        $articulos = Sucursales::find($sucursal_name)->articulos->where("master_id", "=", "1")->first();
 
-        $variables = compact("articulos");
-        $pdf = PDF::loadView("reports/sucursalReport", $variables);
-        return $pdf->stream();
+        if($articulos != null)  {
+            $variables = compact("articulos");
+            $pdf = PDF::loadView("reports/sucursalReport", $variables);
+            return $pdf->stream();
+        }
+        else {
+            return back()->withErrors(["no-data-sucursal-report" => "No hemos encontrado datos aún, es posible que aún no hayan mantenimientos hechos o que aún no se haya registrado ningún artículo en esta sucursal"]);
+        }
+
     }
 
     //Genera reportes PDF para el historial de mantenimientos

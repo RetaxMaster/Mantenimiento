@@ -44,7 +44,7 @@ class ReportsController extends Controller {
     
                     //Veríficamos si ya se le dió mantenimiento
     
-                    if ($articulos->mantenimiento_hecho == 0) { //TODO: Aqui
+                    if ($articulos->mantenimiento_hecho == 1) {
                         $mantenimientos_hechos = $cantidad_articulos_a_mantener;
                         $mantenimientos_vencidos = 0;
                         $costo += ($articulos->costo * $articulos->cantidad);
@@ -71,7 +71,7 @@ class ReportsController extends Controller {
                 $columns["id"] = $mast->id;
                 $columns["name"] = $mast->name;
                 $columns["cantidad"] = $mast->articulos->sum("cantidad");
-                $columns["inversion"] = (float) \App\Master::select(DB::raw("sum(articulos.costo * articulos.cantidad) as inversion"))->join("articulos", "articulos.master_id", "masters.id")->where("master_id", "=", $mast->id)->where("mantenimiento_hecho", "=", "0")->first()->inversion; //TODO: Aqui
+                $columns["inversion"] = (float) \App\Master::select(DB::raw("sum(articulos.costo * articulos.cantidad) as inversion"))->join("articulos", "articulos.master_id", "masters.id")->where("master_id", "=", $mast->id)->where("mantenimiento_hecho", "=", "1")->first()->inversion;
                 $columns["fecha"] = get_short_date_from_timestamp($mast->created_at). " " . get_time_from_timestamp($mast->created_at);
 
                 array_push($info, $columns);

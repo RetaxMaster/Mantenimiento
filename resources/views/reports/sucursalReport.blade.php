@@ -18,9 +18,8 @@
     <div class="info">
         <span>Cantidad de artículos en existencia: <b>{{ $articulos->cantidad }}</b></span><br><br>
         @if ($articulos->manual != null)
-            {{-- TODO: Poner enlace de descarga del manual --}}
-            <span class="text-muted">Este artículo incluye manual de mantenimiento: <a href="#">Descarga el manual</a></span>
-        @else
+            <span class="text-muted">Este artículo incluye manual de mantenimiento: <a href="{{ route("manual", ["name" => $articulos->manual]) }}">Descarga el manual</a></span>
+        @else 
             <span class="text-muted">Este artículo no incluye manual de mantenimiento</span>
         @endif
     </div>

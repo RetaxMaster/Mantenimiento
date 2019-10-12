@@ -46,7 +46,7 @@ class User extends Authenticatable
             'email' => "admin@admin.com",
             'rol' => 3,
             'email_verified_at' => now(),
-            'password' => Hash::make("asd"),
+            'password' => Hash::make("admin1864"),
             'remember_token' => Str::random(10),
         ]);
     }

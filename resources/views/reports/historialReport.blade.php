@@ -36,8 +36,8 @@
                 <td>{{ ($articulo->manual != null) ? "Si" : "No" }}</td>
                 <td>{{ $articulo->costo }}</td>
                 <td>{{ $articulo->cantidad }}</td>
-                <td>{{ get_short_date_from_timestamp($articulo->fecha_mantenimiento) }} {{ get_time_from_timestamp($articulo->fecha_mantenimiento) }}</td>
-                <td>{{ ($articulo->mantenimiento_hecho == 1) ? get_short_date_from_timestamp($articulo->updated_at) . " " . get_time_from_timestamp($articulo->updated_at) : "No se hizo el mantenimiento" }}</td>
+                <td>{{ get_short_date_from_timestamp($articulo->fecha_mantenimiento) }}</td>
+                <td>{{ ($articulo->mantenimiento_hecho == 1) ? get_short_date_from_timestamp($articulo->updated_at) . " " . get_time_from_timestamp($articulo->updated_at) : "No se ha hecho ningún mantenimiento" }}</td>
                 @if ($articulo->mantenimiento_hecho == 1)
                 <td class="text-success">Realizado</td>
                 @elseif ($articulo->mantenimiento_hecho == 2)

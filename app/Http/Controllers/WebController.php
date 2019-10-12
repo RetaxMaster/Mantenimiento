@@ -112,18 +112,15 @@ class WebController extends Controller {
 
     //Tests de la página
     public function test() {
-        $sucursal = 1;
-        $articulos = ($sucursal == 0) ? Articulos::get() : Articulos::where("sucursal_id", "=", $sucursal)->get();
+        $data = [];
+        $data["articulo"] = "Algo";
+        $data["vence"] = "Algo";
+        $data["picture"] = "U851i9004o571U5.jpg";
+        $data["name"] = "Algo";
+        $data["username"] = "Algo";
 
-        $start_date = date("Y-m-d");
-        $end_date = add_time($start_date, env("DEATH_DAYS") . " días");
-
-        $data["total"] = $articulos->count();
-        $data["realizados"] = $articulos->where("mantenimiento_hecho", "=", 1)->count();
-        $data["vencidos"] = $articulos->where("mantenimiento_hecho", "=", 2)->count();
-        $data["porVencer"] = $articulos->where("mantenimiento_hecho", "=", 0)->whereBetween("fecha_mantenimiento", [$start_date, $end_date])->count();
-        $data["pendientes"] = $articulos->where("mantenimiento_hecho", "=", 0)->count();
-        return json_encode($data);
+        $var = compact("data");
+        return view("mail/notify", $var);
     }
 
 }

@@ -13,7 +13,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\StorageMediaCommand::class        
+        Commands\StorageMediaCommand::class,
+        Commands\SendMaintainmentNotificationsCommand::class,        
+        Commands\verifyPastMaintainmentsCommand::class      
     ];
 
     /**
@@ -22,10 +24,9 @@ class Kernel extends ConsoleKernel
      * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
      * @return void
      */
-    protected function schedule(Schedule $schedule)
-    {
-        // $schedule->command('inspire')
-        //          ->hourly();
+    protected function schedule(Schedule $schedule) {
+        $schedule->command('maintainment:notificate')->dailyAt("05:12");
+        $schedule->command('maintainment:verify')->dailyAt("05:12");
     }
 
     /**

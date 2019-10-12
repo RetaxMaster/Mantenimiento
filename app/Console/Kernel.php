@@ -25,8 +25,8 @@ class Kernel extends ConsoleKernel
      * @return void
      */
     protected function schedule(Schedule $schedule) {
-        $schedule->command('maintainment:notificate')->dailyAt("05:12");
-        $schedule->command('maintainment:verify')->dailyAt("05:12");
+        $schedule->command('maintainment:notificate')->dailyAt("23:30");
+        $schedule->command('maintainment:verify')->dailyAt("23:30");
     }
 
     /**

@@ -167,4 +167,23 @@ class ProcessController extends Controller {
         return json_encode($response);
     }
 
+    //Marca un mantenimiento como hecho
+    public function completeMantainment() {
+        $id = request("id");
+        $articulos = Articulos::find($id);
+        if ($articulos != null) {
+            $articulos->mantenimiento_hecho = 1;
+            $articulos->save();
+            $articulos->fresh();
+            $response["status"] = "true";
+        }
+        else {
+            $response["status"] = "false";
+            $response["responseText"] = "No se encontró el artículo";
+        }
+
+        return json_encode($response);
+
+    }
+
 }

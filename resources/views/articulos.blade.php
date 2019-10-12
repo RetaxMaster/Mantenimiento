@@ -79,7 +79,7 @@
                             <label class="custom-control-label" for="user-{{ $user->id }}">{{ $user->username }}</label>
                         </div>
                         @empty
-                        <div class="col-12 text-center my-3 text-muted">
+                        <div class="col-12 text-center my-3 text-muted not-found">
                             No hemos encontrado ningúna sucursal
                         </div>
                         @endforelse

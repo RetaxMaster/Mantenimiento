@@ -3,17 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Articulos;
+use App\Mantenimientos;
 use App\Master;
 use App\Sectores;
 use App\Sucursales;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class WebController extends Controller {
     
     //Carga la página principal
     public function loadHome() {
-        return view("home");
+
+        $mantenimientos = Mantenimientos::select(["masters.name", "articulos.fecha_mantenimiento", "articulos.manual", "mantenimientos.articulo_id", "articulos.mantenimiento_hecho"])
+        ->join("articulos", "mantenimientos.articulo_id", "articulos.id")
+        ->join("masters", "articulos.master_id", "masters.id")
+        ->where("usuario_id", "=", auth()->user()->id)
+        ->where("mantenimiento_hecho", "=", "0")
+        ->orWhere("mantenimiento_hecho", "=", "2")
+        ->get();
+
+        $variables = compact("mantenimientos");
+        return view("home", $variables);
     }
 
     //Carga la página de sucursales
@@ -59,6 +71,11 @@ class WebController extends Controller {
     //Carga la página para registrar un usuario
     public function loadRegister() {
         return view("auth/register");
+    }
+
+    //Descarga un manual de mantenimiento
+    public function downloadManual($name) {
+        return response()->download(storage_path("media/manuales/".$name));
     }
 
     //Tests de la página

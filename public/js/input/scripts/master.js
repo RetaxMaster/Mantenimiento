@@ -43,7 +43,7 @@ $(document).ready(function(){
             icon: "warning",
             buttons: ["Cancelar", "Eliminar"],
             dangerMode: true
-        }).then((willDelete) => {
+        }).then(function(willDelete){
             if (willDelete) {
                 loading(true, "Eliminando...");
                 var data = { 

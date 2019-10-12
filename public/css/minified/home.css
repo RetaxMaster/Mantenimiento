@@ -17,3 +17,7 @@
 .notifications p {
     margin: 0;
 }
+
+.notifications .alert {
+    max-width: 250px;
+}

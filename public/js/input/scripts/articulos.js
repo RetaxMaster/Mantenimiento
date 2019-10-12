@@ -35,44 +35,65 @@ $(document).ready(function(){
 
         if (validateInputs(this)) {
             if ($(".user-asigned:checked").length > 0) {
-                loading(true, "Agregando...");
-                var formData = new FormData(this);
-                var thisForm = this;
 
-                //Recojo los valores de los checkbox
-                var users = $(".user-asigned:checked").map(function() {
-                    return this.value;
-                }).get();
+                var canContinue = true;
 
-                formData.append("users", JSON.stringify(users));
-                formData.append("_token", $("meta[name='csrf-token']").attr("content"));
-    
-                $.ajax({
-                    url: route("addArticulo").url(),
-                    type: "post",
-                    dataType: "json",
-                    data: formData,
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    success: function (res) {
-                        loading(false);
-
-                        if (res.status == "true") {
-                            swal("¡Listo!", "¡Artículo agregado correctamente!", "success");
-                            thisForm.reset();
-                            var element = $('<li id="art-' + res.articulos.id + '"><span>' + res.articulos.name + '</span><div class="delete"><i class="fas fa-times"></i></div></li>');
-
-                            $("#Articulos").append(element);
-                            $("#Artiuclos .not-found").remove();
-                        } else {
-                            swal("Error", res.message, "error");
-                        }
-                    },
-                    error: function (e) {
-                        swal("Error", e.responseText, "error");
+                if ($("#picture").val() != "") {
+                    if (!validatePicture($("#picture").get(0))) {
+                        canContinue = false;
+                        swal("Error", "Solo se permiten archivos jpg, png y gif para la imagen", "error");
+                        $("#picture").val("");
                     }
-                });
+                }
+                
+                if ($("#manual").val() != "") {
+                    if (!validateFile($("#manual").get(0))) {
+                        canContinue = false;
+                        swal("Error", "Solo se permiten archivos pdf y documentos de word para el manual", "error");
+                        $("#manual").val("");
+                    }
+                }
+
+                if (canContinue) {
+                    loading(true, "Agregando...");
+                    var formData = new FormData(this);
+                    var thisForm = this;
+    
+                    //Recojo los valores de los checkbox
+                    var users = $(".user-asigned:checked").map(function() {
+                        return this.value;
+                    }).get();
+    
+                    formData.append("users", JSON.stringify(users));
+                    formData.append("_token", $("meta[name='csrf-token']").attr("content"));
+        
+                    $.ajax({
+                        url: route("addArticulo").url(),
+                        type: "post",
+                        dataType: "json",
+                        data: formData,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        success: function (res) {
+                            loading(false);
+    
+                            if (res.status == "true") {
+                                swal("¡Listo!", "¡Artículo agregado correctamente!", "success");
+                                thisForm.reset();
+                                var element = $('<li id="art-' + res.articulos.id + '"><span>' + res.articulos.name + '</span><div class="delete"><i class="fas fa-times"></i></div></li>');
+    
+                                $("#Articulos").append(element);
+                                $("#Artiuclos .not-found").remove();
+                            } else {
+                                swal("Error", res.message, "error");
+                            }
+                        },
+                        error: function (e) {
+                            swal("Error", e.responseText, "error");
+                        }
+                    });
+                }
             }
             else {
                 swal("Error", "Debes elegir al menos un usuario para mantenimiento, si no ves ningún usuario debes crear uno.", "error");

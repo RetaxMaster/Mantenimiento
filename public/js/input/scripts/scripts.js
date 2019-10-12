@@ -25,3 +25,17 @@ function validateInputs(form) {
     });
     return flag;
 }
+
+function validatePicture(input) {
+    return validateFile(input, ["image/jpeg", "image/png", "image/gif"]);
+}
+
+function validateFile(input, supportedTypes = ["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"]) {
+    let flag = true;
+
+    for (let i = 0; i < input.files.length; i++)
+        if (supportedTypes.indexOf(input.files[i].type) == -1)
+            flag = false;
+
+    return flag;
+}

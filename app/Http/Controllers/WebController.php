@@ -56,6 +56,11 @@ class WebController extends Controller {
         return view("graficos", $variables);
     }
 
+    //Carga la página para registrar un usuario
+    public function loadRegister() {
+        return view("auth/register");
+    }
+
     //Tests de la página
     public function test() {
         $sucursal = 1;

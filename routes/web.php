@@ -23,6 +23,8 @@ Route::get('/reportes', "WebController@loadReportes")->name("reportes");
 
 Route::get('/graficos', "WebController@loadGraficos")->name("graficos");
 
+Route::get('/register', "WebController@loadRegister")->name("register");
+
 Route::get('/test', "WebController@test")->name("test");
 
 // Llamadas Ajax
@@ -46,6 +48,8 @@ Route::post('/addArticulo', "ProcessController@addArticulo")->name("addArticulo"
 Route::post('/deleteArticulo', "ProcessController@deleteArticulo")->name("deleteArticulo");
 
 Route::post('/getArticulos', "ProcessController@getArticulos")->name("getArticulos");
+
+Route::post('/register', "Auth\RegisterController@register")->name("registerPost");
 
 // -> Llamadas Ajax
 

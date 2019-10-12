@@ -10,5 +10,18 @@ $(document).ready(function() {
     });
 
     // -> Modal
-
+    
 });
+
+function validateInputs(form) {
+    let flag = true;
+    form.querySelectorAll("input:not(.no-required), textarea:not(.no-required), .text-area-container .text-area").forEach(element => {
+        if ((element.tagName == "INPUT" && element.value == "") || (element.tagName == "TEXTAREA" && element.value == "") || (element.tagName == "DIV" && element.textContent == "")) {
+            flag = false;
+            element.classList.add("is-invalid");
+        } else {
+            element.classList.remove("is-invalid");
+        }
+    });
+    return flag;
+}

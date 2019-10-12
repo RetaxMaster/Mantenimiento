@@ -50,6 +50,9 @@
                             <a class="nav-link" href="{{ route("graficos") }}">Gráficos</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route("register") }}">Registrar usuario</a>
+                        </li>
+                        <li class="nav-item">
                             <form action="{{ route("logout") }}" method="post">
                                 @csrf
                                 <button class="nav-link" type="submit" title="Cerrar sesión"><i class="fas fa-power-off"></i></button>
